@@ -50,3 +50,50 @@ p {
   font-weight: 400;
   color: rgb(173, 0, 173);
 }
+ 
+button {
+  color: white;
+  background-color: rgb(99, 99, 192);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(75, 75, 160);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+a {
+  color: green;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: darkgreen;
+  text-decoration: underline;
+}
+
+a:active {
+  color: darkgreen;
+  text-decoration: underline;
+}
+
+.about-page,
+.skills,
+.about{
+  padding: 50px;
+  margin: 30px;
+}
+
+.progress{
+  padding: 10px;
+  margin: 10px;
+}

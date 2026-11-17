@@ -1,3 +1,4 @@
+/* LD 9 */
 body {
   font-family:'Roboto', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
 }
@@ -10,14 +11,14 @@ h1 {
 }
 
 h2{
-  font-family: 'Haettenschweiler','Arial Narrow Bold', sans-serif;
+  font-family: 'Roboto','Arial Narrow Bold', sans-serif;
   font-size: 48px;
   font-weight: 700;
   color: grey;
 }
 
 h3 {
-  font-family: 'Haettenschweiler','Arial Narrow Bold', sans-serif;
+  font-family: 'Roboto','Arial Narrow Bold', sans-serif;
   font-size: 32px;
   font-weight: 700;
   color: green;
@@ -31,7 +32,7 @@ h4 {
 }
 
 h5 {
-  font-family: 'Impact','Arial Narrow Bold', sans-serif;
+  font-family: 'Georgia','Arial Narrow Bold', sans-serif;
   font-size: 32px;
   font-weight: 700;
   color: orange;
@@ -129,10 +130,6 @@ a:active {
   border-radius: 10px;
 }
 
-/* PAPILDOMA UŽDUOTIS */
-
-/* Nenumeruotas sąrašas */
-
 #services > .container > ul {
   list-style: none;
   padding-left: 0;
@@ -150,9 +147,6 @@ a:active {
   position: absolute;
   left: 0;
 }
-
-
-/* Numeruotas sąrašas */
 
 #services > .container > ol {
   list-style: none;
@@ -184,9 +178,6 @@ a:active {
   line-height: 30px;
 }
 
-
-/* Įdėtinis sąrašas */
-
 #services ol ul {
   background-color: lightgrey;
   border-left: 4px solid green;
@@ -197,9 +188,6 @@ a:active {
 
   list-style-type: square;
 }
-
-
-/* Lentelė */
 
 #services table {
   width: 100%;
@@ -221,3 +209,6 @@ a:active {
 #services table tbody tr:hover td {
   background-color: rgb(88, 169, 196);
 }
+
+/* LD 10 */
+

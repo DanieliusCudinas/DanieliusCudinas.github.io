@@ -1,5 +1,5 @@
 body {
-  font-family:'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+  font-family:'Roboto', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
 }
 
 h1 {
@@ -24,7 +24,7 @@ h3 {
 }
 
 h4 {
-  font-family: 'Impact','Arial Narrow Bold', sans-serif;
+  font-family: 'Roboto','Arial Narrow Bold', sans-serif;
   font-size: 32px;
   font-weight: 700;
   color: greenyellow;
@@ -86,14 +86,138 @@ a:active {
   text-decoration: underline;
 }
 
-.about-page,
-.skills,
-.about{
-  padding: 50px;
-  margin: 30px;
+#about,
+#resume,
+#portfolio {
+  padding: 50px 30px;
+  margin-bottom: 30px;
 }
 
-.progress{
-  padding: 10px;
-  margin: 10px;
+.about
+.content {
+  margin: 25px;
+  border: 2px solid green;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.resume
+.resume-item {
+  padding: 20px;
+  border: 2px solid grey;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio
+.portfolio-content {
+  border: 2px solid blue;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  background-color: lightslategrey;
+  border: 3px solid blue;
+  box-shadow: 0 4px 10px black;
+}
+
+.skills 
+.progress-bar-wrap {
+  background-color: grey;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+/* PAPILDOMA UŽDUOTIS */
+
+/* Nenumeruotas sąrašas */
+
+#services > .container > ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#services > .container > ul > li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+}
+
+#services > .container > ul > li::before {
+  content: "◆";
+  color: blue;
+  position: absolute;
+  left: 0;
+}
+
+
+/* Numeruotas sąrašas */
+
+#services > .container > ol {
+  list-style: none;
+  counter-reset: etapas;
+  padding-left: 0;
+}
+
+#services > .container > ol > li {
+  counter-increment: etapas;
+  position: relative;
+  padding-left: 45px;
+  margin-bottom: 15px;
+}
+
+#services > .container > ol > li::before {
+  content: counter(etapas);
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  background-color: green;
+  color: white;
+
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+
+  text-align: center;
+  line-height: 30px;
+}
+
+
+/* Įdėtinis sąrašas */
+
+#services ol ul {
+  background-color: lightgrey;
+  border-left: 4px solid green;
+  border-radius: 8px;
+
+  margin-top: 10px;
+  padding: 10px 20px 10px 35px;
+
+  list-style-type: square;
+}
+
+
+/* Lentelė */
+
+#services table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#services table th {
+  background-color: darkgreen;
+  color: white;
+  font-weight: bold;
+}
+
+#services table th,
+#services table td {
+  padding: 15px;
+  text-align: center;
+}
+
+#services table tbody tr:hover td {
+  background-color: rgb(88, 169, 196);
 }

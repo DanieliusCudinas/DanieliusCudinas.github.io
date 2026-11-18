@@ -26,7 +26,7 @@ h3 {
 
 h4 {
   font-family: 'Roboto','Arial Narrow Bold', sans-serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   color: greenyellow;
 }
@@ -47,7 +47,7 @@ h6 {
 
 p {
   font-family: 'Roboto','Arial Narrow Bold', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 400;
   color: rgb(173, 0, 173);
 }
@@ -212,3 +212,161 @@ a:active {
 
 /* LD 10 */
 
+.level-progress {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 3px solid darkgreen;
+  border-radius: 12px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 20px;
+  background-color: lightgrey;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 70%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: green;
+}
+
+.progress-summary {
+  display: flex;
+  gap: 20px;
+}
+
+.summary-card {
+  flex: 1;
+  text-align: center;
+}
+
+#module {
+  padding: 50px 0;
+}
+
+.progress-summary,
+.skills-stats,
+.kanban-board {
+  margin-top: 30px;
+}
+
+.summary-card,
+.stat-card,
+.kanban-column,
+.skill-card {
+  border: 3px solid darkgreen;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.kanban-column {
+  background-color: rgb(181, 181, 250);
+}
+
+.skill-card {
+  background-color: rgb(0, 63, 84);
+  margin-bottom: 15px;
+}
+
+.skills-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stat-card {
+  flex: 1;
+  text-align: center;
+  background-color: rgb(214, 214, 214);
+}
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.summary-card {
+  background-color: bisque;
+}
+
+/* LD 10 - papildoma*/
+
+#services {
+  background: linear-gradient(
+    270deg,
+    rgb(20, 60, 90),
+    rgb(40, 120, 140),
+    rgb(80, 40, 120)
+  );
+
+  background-size: 600% 600%;
+
+  animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.css-shapes {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 40px
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid green;
+  animation: rotateTriangle 3s linear infinite;
+}
+
+@keyframes rotateTriangle {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

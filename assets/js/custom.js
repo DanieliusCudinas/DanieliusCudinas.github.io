@@ -1,204 +1,340 @@
-/**
-* Template Name: Personal
-* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-* Updated: Mar 05 2025 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+const forma = document.getElementById("contact-form");
+const siustiMygtuka = document.getElementById("submit-button");
+const rezultatas = document.getElementById("form-result");
+const isvalytiMygtuka = document.getElementById("clear-button");
 
-(function() {
-  "use strict";
+const vardasLaukas = document.getElementById("vardas");
+const pavardeLaukas = document.getElementById("pavarde");
+const emailLaukas = document.getElementById("email");
+const adresasLaukas = document.getElementById("adresas");
+const telefonasLaukas = document.getElementById("telefonas");
 
-  /**
-   * Apply .scrolled class to the body as the page is scrolled down
-   */
-  function toggleScrolled() {
-    const selectBody = document.querySelector('body');
-    const selectHeader = document.querySelector('#header');
-    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
-    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
+const klausimas1Laukas = document.getElementById("klausimas1");
+const klausimas2Laukas = document.getElementById("klausimas2");
+const klausimas3Laukas = document.getElementById("klausimas3");
+
+const vardasError = document.getElementById("vardas-error");
+const pavardeError = document.getElementById("pavarde-error");
+const emailError = document.getElementById("email-error");
+const adresasError = document.getElementById("adresas-error");
+
+const klausimas1Error = document.getElementById("klausimas1-error");
+const klausimas2Error = document.getElementById("klausimas2-error");
+const klausimas3Error = document.getElementById("klausimas3-error");
+
+
+
+
+function tikrintiForma() {
+  const raides = /^[A-Za-zĄČĘĖĮŠŲŪŽąčęėįšųūž]+$/;
+
+  const vardasGerai =
+    vardasLaukas.value.trim() !== "" &&
+    raides.test(vardasLaukas.value.trim());
+
+  const pavardeGerai =
+    pavardeLaukas.value.trim() !== "" &&
+    raides.test(pavardeLaukas.value.trim());
+
+  const emailGerai =
+    emailLaukas.value.trim() !== "" &&
+    emailLaukas.checkValidity();
+
+  const adresasGerai =
+    adresasLaukas.value.trim() !== "";
+
+  const telefonasGerai =
+    /^\+370 6\d{2} \d{5}$/.test(telefonasLaukas.value);
+
+  const klausimas1Gerai =
+    klausimas1Laukas.value !== "" &&
+    Number(klausimas1Laukas.value) >= 1 &&
+    Number(klausimas1Laukas.value) <= 10;
+
+  const klausimas2Gerai =
+    klausimas2Laukas.value !== "" &&
+    Number(klausimas2Laukas.value) >= 1 &&
+    Number(klausimas2Laukas.value) <= 10;
+
+  const klausimas3Gerai =
+    klausimas3Laukas.value !== "" &&
+    Number(klausimas3Laukas.value) >= 1 &&
+    Number(klausimas3Laukas.value) <= 10;
+
+console.log({
+  vardasGerai,
+  pavardeGerai,
+  emailGerai,
+  telefonasGerai,
+  adresasGerai,
+  klausimas1Gerai,
+  klausimas2Gerai,
+  klausimas3Gerai
+});
+
+siustiMygtuka.disabled = !(
+  vardasGerai &&
+  pavardeGerai &&
+  emailGerai &&
+  telefonasGerai &&
+  adresasGerai &&
+  klausimas1Gerai &&
+  klausimas2Gerai &&
+  klausimas3Gerai &&
+  forma.checkValidity()
+);
+}
+
+forma.addEventListener("input", tikrintiForma);
+
+tikrintiForma();
+
+
+
+
+forma.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const vardasTeisingas = tikrintiVarda();
+  const pavardeTeisinga = tikrintiPavarde();
+  const emailTeisingas = tikrintiEmail();
+  const adresasTeisingas = tikrintiAdresa();
+
+  const klausimas1Teisingas =
+    tikrintiVertinima(klausimas1Laukas, klausimas1Error);
+
+  const klausimas2Teisingas =
+    tikrintiVertinima(klausimas2Laukas, klausimas2Error);
+
+  const klausimas3Teisingas =
+    tikrintiVertinima(klausimas3Laukas, klausimas3Error);
+
+  if (
+    !vardasTeisingas ||
+    !pavardeTeisinga ||
+    !emailTeisingas ||
+    !adresasTeisingas ||
+    !klausimas1Teisingas ||
+    !klausimas2Teisingas ||
+    !klausimas3Teisingas
+  ) {
+    return;
   }
 
-  document.addEventListener('scroll', toggleScrolled);
-  window.addEventListener('load', toggleScrolled);
+  const vardas = document.getElementById("vardas").value;
+  const pavarde = document.getElementById("pavarde").value;
+  const email = document.getElementById("email").value;
+  const telefonas = document.getElementById("telefonas").value;
+  const adresas = document.getElementById("adresas").value;
 
-  /**
-   * Mobile nav toggle
-   */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+  const ivertinimas1 =
+    Number(document.getElementById("klausimas1").value);
 
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
-  }
-  if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
-  }
+  const ivertinimas2 =
+    Number(document.getElementById("klausimas2").value);
 
-  /**
-   * Hide mobile nav on same-page/hash links
-   */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
-      }
-    });
+  const ivertinimas3 =
+    Number(document.getElementById("klausimas3").value);
 
-  });
+  const duomenys = {
+    vardas: vardas,
+    pavarde: pavarde,
+    email: email,
+    telefonas: telefonas,
+    adresas: adresas,
+    ivertinimas1: ivertinimas1,
+    ivertinimas2: ivertinimas2,
+    ivertinimas3: ivertinimas3
+  };
 
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
-  });
+  const vidurkis =
+    (ivertinimas1 + ivertinimas2 + ivertinimas3) / 3;
 
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
+  console.log(duomenys);
 
-  /**
-   * Scroll top button
-   */
-  let scrollTop = document.querySelector('.scroll-top');
+  rezultatas.innerHTML = `
+    <p><strong>Vardas:</strong> ${duomenys.vardas}</p>
+    <p><strong>Pavardė:</strong> ${duomenys.pavarde}</p>
+    <p><strong>El. paštas:</strong> ${duomenys.email}</p>
+    <p><strong>Telefono numeris:</strong> ${duomenys.telefonas}</p>
+    <p><strong>Adresas:</strong> ${duomenys.adresas}</p>
+    <p><strong>1 įvertinimas:</strong> ${duomenys.ivertinimas1}</p>
+    <p><strong>2 įvertinimas:</strong> ${duomenys.ivertinimas2}</p>
+    <p><strong>3 įvertinimas:</strong> ${duomenys.ivertinimas3}</p>
+    <p><strong>${duomenys.vardas} ${duomenys.pavarde}:</strong>${vidurkis.toFixed(2)}</p>
+  `;
+});
 
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
-    }
-  }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
 
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
 
-  /**
-   * Animation on scroll function and init
-   */
-  function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
-  }
-  window.addEventListener('load', aosInit);
 
-  /**
-   * Init typed.js
-   */
-  const selectTyped = document.querySelector('.typed');
-  if (selectTyped) {
-    let typed_strings = selectTyped.getAttribute('data-typed-items');
-    typed_strings = typed_strings.split(',');
-    new Typed('.typed', {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
-    });
+vardasLaukas.addEventListener("input", tikrintiVarda);
+pavardeLaukas.addEventListener("input", tikrintiPavarde);
+emailLaukas.addEventListener("input", tikrintiEmail);
+adresasLaukas.addEventListener("input", tikrintiAdresa);
+telefonasLaukas.addEventListener("input", formatuotiTelefona);
+
+
+klausimas1Laukas.addEventListener("input", function() {
+  tikrintiVertinima(klausimas1Laukas, klausimas1Error);
+});
+
+klausimas2Laukas.addEventListener("input", function() {
+  tikrintiVertinima(klausimas2Laukas, klausimas2Error);
+});
+
+klausimas3Laukas.addEventListener("input", function() {
+  tikrintiVertinima(klausimas3Laukas, klausimas3Error);
+});
+
+function tikrintiVarda() {
+  const raides = /^[A-Za-zĄČĘĖĮŠŲŪŽąčęėįšųūž]+$/;
+
+  if (vardasLaukas.value.trim() === "") {
+    vardasError.textContent = "Vardas yra privalomas.";
+    vardasLaukas.classList.add("input-error");
+    return false;
   }
 
-  /**
-   * Initiate Pure Counter
-   */
-  new PureCounter();
-
-  /**
-   * Animate the skills items on reveal
-   */
-  let skillsAnimation = document.querySelectorAll('.skills-animation');
-  skillsAnimation.forEach((item) => {
-    new Waypoint({
-      element: item,
-      offset: '80%',
-      handler: function(direction) {
-        let progress = item.querySelectorAll('.progress .progress-bar');
-        progress.forEach(el => {
-          el.style.width = el.getAttribute('aria-valuenow') + '%';
-        });
-      }
-    });
-  });
-
-  /**
-   * Init swiper sliders
-   */
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
-
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
-    });
+  if (!raides.test(vardasLaukas.value.trim())) {
+    vardasError.textContent = "Vardą gali sudaryti tik raidės.";
+    vardasLaukas.classList.add("input-error");
+    return false;
   }
 
-  window.addEventListener("load", initSwiper);
+  vardasError.textContent = "";
+  vardasLaukas.classList.remove("input-error");
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  return true;
+}
 
-  /**
-   * Init isotope layout and filters
-   */
-  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
-    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
+function tikrintiPavarde() {
+  const raides = /^[A-Za-zĄČĘĖĮŠŲŪŽąčęėįšųūž]+$/;
 
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
-      });
-    });
+  if (pavardeLaukas.value.trim() === "") {
+    pavardeError.textContent = "Pavardė yra privaloma.";
+    pavardeLaukas.classList.add("input-error");
+    return false;
+  }
 
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
-      }, false);
-    });
+  if (!raides.test(pavardeLaukas.value.trim())) {
+    pavardeError.textContent = "Pavardę gali sudaryti tik raidės.";
+    pavardeLaukas.classList.add("input-error");
+    return false;
+  }
 
-  });
+  pavardeError.textContent = "";
+  pavardeLaukas.classList.remove("input-error");
 
-})();
+  return true;
+}
+
+function tikrintiEmail() {
+  if (emailLaukas.value.trim() === "") {
+    emailError.textContent = "El. paštas yra privalomas.";
+    emailLaukas.classList.add("input-error");
+    return false;
+  }
+
+  if (!emailLaukas.checkValidity()) {
+    emailError.textContent = "Įveskite tinkamą el. pašto adresą.";
+    emailLaukas.classList.add("input-error");
+    return false;
+  }
+
+  emailError.textContent = "";
+  emailLaukas.classList.remove("input-error");
+
+  return true;
+}
+
+function tikrintiAdresa() {
+  if (adresasLaukas.value.trim() === "") {
+    adresasError.textContent = "Adresas yra privalomas.";
+    adresasLaukas.classList.add("input-error");
+    return false;
+  }
+
+  adresasError.textContent = "";
+  adresasLaukas.classList.remove("input-error");
+
+  return true;
+}
+
+function tikrintiVertinima(laukas, errorElementas) {
+  const reiksme = Number(laukas.value);
+
+  if (laukas.value === "") {
+    errorElementas.textContent = "Įvertinimas yra privalomas.";
+    laukas.classList.add("input-error");
+    return false;
+  }
+
+  if (reiksme < 1 || reiksme > 10) {
+    errorElementas.textContent = "Įvertinimas turi būti nuo 1 iki 10.";
+    laukas.classList.add("input-error");
+    return false;
+  }
+
+  errorElementas.textContent = "";
+  laukas.classList.remove("input-error");
+
+  return true;
+}
+
+function formatuotiTelefona() {
+  let skaiciai = telefonasLaukas.value.replace(/\D/g, "");
+
+  if (skaiciai.startsWith("370")) {
+    skaiciai = skaiciai.slice(3);
+  }
+
+  if (skaiciai.startsWith("8")) {
+    skaiciai = skaiciai.slice(1);
+  }
+
+  skaiciai = skaiciai.slice(0, 8);
+
+  let suformatuotas = "+370 ";
+
+  if (skaiciai.length > 0) {
+    suformatuotas += skaiciai.slice(0, 3);
+  }
+
+  if (skaiciai.length > 3) {
+    suformatuotas += " " + skaiciai.slice(3, 8);
+  }
+
+  telefonasLaukas.value = suformatuotas;
+
+  tikrintiForma();
+}
+
+
+
+
+isvalytiMygtuka.addEventListener("click", function() {
+  forma.reset();
+
+  rezultatas.innerHTML = "";
+
+  vardasError.textContent = "";
+  pavardeError.textContent = "";
+  emailError.textContent = "";
+  adresasError.textContent = "";
+
+  klausimas1Error.textContent = "";
+  klausimas2Error.textContent = "";
+  klausimas3Error.textContent = "";
+
+  vardasLaukas.classList.remove("input-error");
+  pavardeLaukas.classList.remove("input-error");
+  emailLaukas.classList.remove("input-error");
+  adresasLaukas.classList.remove("input-error");
+
+  klausimas1Laukas.classList.remove("input-error");
+  klausimas2Laukas.classList.remove("input-error");
+  klausimas3Laukas.classList.remove("input-error");
+
+  tikrintiForma();
+});

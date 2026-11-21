@@ -229,7 +229,7 @@ a:active {
 }
 
 .progress-fill {
-  width: 70%;
+  width: 0%;
   height: 100%;
   border-radius: 10px;
   background-color: green;
@@ -369,4 +369,13 @@ a:active {
   to {
     transform: rotate(360deg);
   }
+}
+
+.error-text {
+  color: red;
+  font-size: 14px;
+}
+
+.input-error {
+  border: 2px solid red
 }

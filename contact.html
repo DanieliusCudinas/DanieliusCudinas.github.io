@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Contact - Personal Bootstrap Template</title>
+  <title>Kontaktai</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -143,35 +143,119 @@
 
         </div>
 
-        <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
-          <div class="row gy-4">
+    <form id="contact-form" data-aos="fade-up" data-aos-delay="600">
 
-            <div class="col-md-6">
-              <input type="text" name="name" class="form-control" placeholder="Jūsų vardas" required="">
-            </div>
+      <div class="row gy-4">
 
-            <div class="col-md-6 ">
-              <input type="email" class="form-control" name="email" placeholder="Jūsų e.paštas" required="">
-            </div>
+        <div class="col-md-6">
+          <input
+            type="text"
+            id="vardas"
+            class="form-control"
+            placeholder="Jūsų vardas"
+            required>
 
-            <div class="col-md-12">
-              <input type="text" class="form-control" name="subject" placeholder="Apie ką" required="">
-            </div>
+          <small id="vardas-error" class="error-text"></small>
+        </div>
 
-            <div class="col-md-12">
-              <textarea class="form-control" name="message" rows="6" placeholder="Pranešimas" required=""></textarea>
-            </div>
+        <div class="col-md-6">
+          <input
+            type="text"
+            id="pavarde"
+            class="form-control"
+            placeholder="Jūsų pavardė"
+            required>
 
-            <div class="col-md-12 text-center">
-              <div class="loading">Kraunasi</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Išsiunte. Ačiū</div>
+          <small id="pavarde-error" class="error-text"></small>
+        </div>
 
-              <button type="submit">Siųsti pranešimą</button>
-            </div>
+        <div class="col-md-6">
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            placeholder="Jūsų el. paštas"
+            required>
 
-          </div>
-        </form><!-- End Contact Form -->
+          <small id="email-error" class="error-text"></small>
+        </div>
+
+        <div class="col-md-6">
+          <input
+            type="tel"
+            id="telefonas"
+            class="form-control"
+            placeholder="Telefono numeris"
+            required>
+        </div>
+
+        <div class="col-md-12">
+          <input
+            type="text"
+            id="adresas"
+            class="form-control"
+            placeholder="Adresas"
+            required>
+
+          <small id="adresas-error" class="error-text"></small>
+        </div>
+
+        <div class="col-md-4">
+          <label for="klausimas1">Kaip vertinate svetainės dizainą?</label>
+          <input
+            type="number"
+            id="klausimas1"
+            class="form-control"
+            min="1"
+            max="10"
+            required>
+
+          <small id="klausimas1-error" class="error-text"></small>
+        </div>
+
+        <div class="col-md-4">
+          <label for="klausimas2">Kaip vertinate svetainės patogumą?</label>
+          <input
+            type="number"
+            id="klausimas2"
+            class="form-control"
+            min="1"
+            max="10"
+            required>
+
+          <small id="klausimas2-error" class="error-text"></small>
+        </div>
+
+        <div class="col-md-4">
+          <label for="klausimas3">Kaip vertinate svetainės turinį?</label>
+          <input
+            type="number"
+            id="klausimas3"
+            class="form-control"
+            min="1"
+            max="10"
+            required>
+
+          <small id="klausimas3-error" class="error-text"></small>
+        </div>
+
+        <div class="col-md-12 text-center">
+          <button type="submit" id="submit-button" disabled>
+            Siųsti
+          </button>
+
+          <button type="button" id="clear-button">
+            Išvalyti
+          </button>
+        </div>
+
+        <div class="col-md-12">
+          <div id="form-result"></div>
+        </div>
+
+      </div>
+
+    </form>
 
       </div>
 

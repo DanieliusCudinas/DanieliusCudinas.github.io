@@ -98,17 +98,17 @@
 
           <div class="summary-card">
             <h3>Bendras XP</h3>
-              <p>210 XP</p>
+            <p id="total-xp">0 XP</p>
           </div>
 
           <div class="summary-card">
             <h3>Lygis</h3>
-              <p>3</p>
+            <p id="current-level">1</p>
           </div>
 
           <div class="summary-card">
             <h3>Rangas</h3>
-              <p>Specialistas</p>
+            <p id="current-rank">Pradedantysis</p>
           </div>
 
         </div>
@@ -117,17 +117,22 @@
 
           <div class="stat-card">
             <h3>Įgūdžiai</h3>
-            <p>7</p>
+            <p id="skills-count">0</p>
           </div>
 
           <div class="stat-card">
             <h3>Mokomasi</h3>
-            <p>3</p>
+            <p id="learning-count">0</p>
           </div>
 
           <div class="stat-card">
             <h3>Atlikta</h3>
-            <p>2</p>
+            <p id="completed-count">0</p>
+          </div>
+
+          <div class="stat-card">
+            <h3>Atlikta procentais</h3>
+            <p id="completed-percent">0%</p>
           </div>
 
         </div>
@@ -137,10 +142,10 @@
           <h3>Progresas iki kito lygio</h3>
           
           <div class="progress-track">
-            <div class="progress-fill"></div>
+            <div class="progress-fill" id="level-progress-fill"></div>
           </div>
 
-          <p>210 XP / 300 XP</p>
+          <p id="level-progress-text">0%</p>
 
         </div>
 
@@ -148,59 +153,17 @@
 
             <div class="kanban-column">
               <h3>Planuojama</h3>
-
-              <div class="skill-card">
-                <h4>JavaScript ciklai</h4>
-                <p>Būsena: Planuojama</p>
-                <p>XP: 60</p>
-              </div>
-
-              <div class="skill-card">
-                <h4>ML</h4>
-                <p>Būsena: Planuojama</p>
-                <p>XP: 40</p>
-              </div>
-
+              <div id="planned-skills"></div>
             </div>
 
             <div class="kanban-column">
               <h3>Mokomasi</h3>
-
-              <div class="skill-card">
-                <h4>HTML pagrindai</h4>
-                <p>Būsena: Mokomasi</p>
-                <p>XP: 60</p>
-              </div>
-
-              <div class="skill-card">
-                <h4>CSS stilizavimas</h4>
-                <p>Būsena: Mokomasi</p>
-                <p>XP: 50</p>
-              </div>
-
-              <div class="skill-card">
-                <h4>Brėžinių ir schemų skaitymas</h4>
-                <p>Būsena: Mokomasi</p>
-                <p>XP: 60</p>
-              </div>
-
+              <div id="learning-skills"></div>
             </div>
 
            <div class="kanban-column">
               <h3>Atlikta</h3>
-
-              <div class="skill-card">
-                <h4>Litavimas</h4>
-                <p>Būsena: Atlikta</p>
-                <p>XP: 30</p>
-              </div>
-
-              <div class="skill-card">
-                <h4>OOP principai</h4>
-                <p>Būsena: Atlikta</p>
-                <p>XP: 30</p>
-              </div>
-
+              <div id="completed-skills"></div>
             </div>
 
         </div>
@@ -257,6 +220,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/module.js"></script>
 
 </body>
 
